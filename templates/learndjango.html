@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>learn the basics of django</title>
+    <ol>
+        1. Create new project.
+ <br>
+        2.To run project go to the pycharm terminal and write:  py .\manage.py runserver and press enter
+          then click on the blue link displayed. It should bring a success rocket page.
+
+        !!NT: Never run it from the chrome widget or from the run project and if you do then never stop the running
+              as this causes errors as you have run your server already!!!!
+        !!NT: Once you add other urls kwa project the success page won't show!!
+ <br>
+
+
+        2. All html files go to/are created under the templates folder.
+
+ <br>
+
+        3. Create static dir on themain project folder (one with the user/dell/...)
+           all css/img/js..go to that folder (static folder).
+
+ <br>
+
+        4.Go to settings.py and under the static url.. skip one line and add:
+            STATICFILES_DIRS =[
+                 BASE_DIR / 'static'
+                   ]
+        this allows the static to pick/recommend in the html code page.
+ <br>
+
+
+        5. To load css to html add {% load static %} to the header section and
+           replace  every link and script which is inside body
+        with :
+           <!--<script  src="{% static 'js/custom.js' %}"></script>-->
+           <!--<link rel="stylesheet" type="text/css" href={% static 'css/bootstrap.css' %} /> -->
+        where you put css/.. in the 'css/...'  and 'js/..' respectively.
+
+           NT: those that are online do not replace with static/ginger/remains as it is when linking e.g..
+           <!--<link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet"/>-->.
+ <br>
+
+
+        6. Images are replaced with <!--<img src="{% static 'images/about-img.png' %}" alt="">-->.
+
+ <br>
+
+        7.Create views.py (python file) under the subfolder in project and manually add
+          <!--from django.shortcuts import render--> to render whatever you have.
+          then create a function/functions for each page
+        e.g:
+             def Home(request):
+                return render(request, 'index.html') <!--can replace Home with anything-->
+
+        which returns the index.html details/view
+
+ <br>
+
+        8.To display go to urls.py where under url pattern add
+           ...path('home/', views.Home, name='my-home')..
+          this gives it the url pattern
+           eg on the browser http://127.0.0.1:8000/home/...you added the /home/
+              in front of ...http://127.0.0.1:8000... to display index.html content
+    </ol>
+</head>
+<body>
+
+</body>
+</html>
